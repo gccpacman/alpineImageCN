@@ -8,6 +8,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: docker.pkg.github.com/gccpacman/oracle-java-8-cn-docker-image/hello-world
+        name: gccpacman/oracle-java-8-cn-docker-image/hello-world
         username: ${{ secrets.GPR_USERNAME }}
         password: ${{ secrets.GPR_TOKEN }}
+        registry: docker.pkg.github.com
