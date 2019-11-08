@@ -8,4 +8,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag gccpacman/oracle-java-8-cn-docker-image:$(date +%s)
+      run: docker build . --file Dockerfile --tag gccpacman/dockerfiles/helloworld:$(date +%s)

@@ -1,5 +1,7 @@
 name: Publish Docker
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -8,7 +10,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: gccpacman/oracle-java-8-cn-docker-image/hello-world
+        name: gccpacman/dockerfiles/helloworld
         username: ${{ secrets.GPR_USERNAME }}
         password: ${{ secrets.GPR_TOKEN }}
         registry: docker.pkg.github.com
