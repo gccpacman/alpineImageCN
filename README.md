@@ -1,8 +1,11 @@
-# dockerfiles
+# Dockerfiles
 
-Base OS: Alpine 10
-CI: Gitlab Action
-Package Registry: Github Package Registry
+This dockerfiles is autobuild by Github Actions and pushed to Github Package registry. 
+
+- Based on Alpine Linux Destribute version 10
+- Automaticly build by Gitlab Actions and pushed into Github Package Registry
+
+# How to use
 
 - How to pull images?
 
