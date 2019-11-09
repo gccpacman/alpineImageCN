@@ -1,0 +1,22 @@
+name: Python
+
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - 'python/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: gccpacman/dockerfiles/python
+        username: ${{ secrets.GPR_USERNAME }}
+        password: ${{ secrets.GPR_TOKEN }}
+        registry: docker.pkg.github.com
+        workdir: python
