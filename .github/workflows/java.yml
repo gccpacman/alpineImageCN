@@ -1,6 +1,11 @@
 name: Java
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - 'java/*'
 
 jobs:
   build:

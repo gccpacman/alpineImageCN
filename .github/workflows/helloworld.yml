@@ -1,6 +1,11 @@
 name: Helloworld
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - 'helloworld/*'
 
 jobs:
   build:
@@ -14,3 +19,4 @@ jobs:
         username: ${{ secrets.GPR_USERNAME }}
         password: ${{ secrets.GPR_TOKEN }}
         registry: docker.pkg.github.com
+        workdir: helloworld

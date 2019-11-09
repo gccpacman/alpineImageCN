@@ -1,19 +1,19 @@
-stages:
-  - build
-docker_build:
-  image: alpine:3.9
-  stage: build
-  script:
-    - sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories 
-    - apk update
-    - apk add curl tar docker
-    - docker build -t $IMAGE_URI:$IMAGE_TAG .
-    - docker login registry.gitlab.com
-    - docker push $IMAGE_URI:$IMAGE_TAG
-  services:
-  - docker:dind
-  variables:
-    DOCKER_HOST: tcp://localhost:2375
-    DOCKER_DRIVER: overlay2
-    IMAGE_URI: registry.gitlab.com/pacmac/dockerfiles/helloworld
-    IMAGE_TAG: latest
+# stages:
+#   - build
+# docker_build:
+#   image: alpine:3.9
+#   stage: build
+#   script:
+#     - sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories 
+#     - apk update
+#     - apk add curl tar docker
+#     - docker build -t $IMAGE_URI:$IMAGE_TAG .
+#     - docker login registry.gitlab.com
+#     - docker push $IMAGE_URI:$IMAGE_TAG
+#   services:
+#   - docker:dind
+#   variables:
+#     DOCKER_HOST: tcp://localhost:2375
+#     DOCKER_DRIVER: overlay2
+#     IMAGE_URI: registry.gitlab.com/pacmac/dockerfiles/helloworld
+#     IMAGE_TAG: latest
