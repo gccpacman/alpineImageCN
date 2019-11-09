@@ -45,7 +45,7 @@ ENV INSTALL_DIR /usr
 
 RUN curl -sL -b "oraclelicense=a" \
   "http://download.oracle.com/otn-pub/java/jdk/${UPDATE_VERSION}-${BUILD_VERSION}/${JAVA_DOWNLOAD_TOKEN}/jdk-${UPDATE_VERSION}-linux-x64.tar.gz" \
-  | tar xz -C $INSTALL_DIR/ \
+  | tar tvfz - -C $INSTALL_DIR/ \
   && ln -s $JAVA_HOME $INSTALL_DIR/java \
   && rm -rf $JAVA_HOME/man
 
