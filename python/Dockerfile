@@ -30,14 +30,17 @@ RUN /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
 RUN /usr/glibc-compat/bin/localedef -i zh_CN -f UTF-8 zh_CN.UTF-8
 RUN echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh
 
-RUN apk add --no-cache python3 \
-    && if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi \
-    && python3 -m ensurepip && \
-    && rm -r /usr/lib/python*/ensurepip  \
-    && mkdir /root/.pip/ \
-    && echo "[global]\nindex-url = http://pypi.douban.com/simple\ntrusted-host = pypi.douban.com" > /root/.pip/pip.conf \
-    && pip3 install --no-cache --upgrade pip setuptools wheel \
-    && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
+# Install Python3
+ENV PYTHONUNBUFFERED=1
+
+RUN apk add --no-cache python3 && \
+    if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
+    python3 -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    mkdir /root/.pip/ && \
+    echo "[global]\nindex-url = http://pypi.douban.com/simple\ntrusted-host = pypi.douban.com" > /root/.pip/pip.conf && \
+    pip3 install --no-cache --upgrade pip setuptools wheel && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
 
 # Change work directry
 RUN mkdir -p /data
