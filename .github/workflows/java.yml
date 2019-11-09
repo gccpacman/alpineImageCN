@@ -1,0 +1,17 @@
+name: Publish Docker
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: gccpacman/dockerfiles/java
+        username: ${{ secrets.GPR_USERNAME }}
+        password: ${{ secrets.GPR_TOKEN }}
+        registry: docker.pkg.github.com
+        workdir: java
