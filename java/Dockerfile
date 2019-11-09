@@ -43,9 +43,9 @@ ENV JAVA_HOME /usr/jdk1.${JAVA_MAJOR_VERSION}.0_${JAVA_UPDATE_VERSION}
 ENV PATH $PATH:$JAVA_HOME/bin
 ENV INSTALL_DIR /usr
 
-RUN curl -sL -b "oraclelicense=a" \
+RUN curl -L -b "oraclelicense=a" \
   "http://download.oracle.com/otn-pub/java/jdk/${UPDATE_VERSION}-${BUILD_VERSION}/${JAVA_DOWNLOAD_TOKEN}/jdk-${UPDATE_VERSION}-linux-x64.tar.gz" \
-  | tar tvfz - -C $INSTALL_DIR/ \
+  && tar zxvf jdk-${UPDATE_VERSION}-linux-x64.tar.gz -C $INSTALL_DIR/ \
   && ln -s $JAVA_HOME $INSTALL_DIR/java \
   && rm -rf $JAVA_HOME/man
 
