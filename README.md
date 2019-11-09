@@ -1,26 +1,16 @@
-# oracle-java-8-cn-docker-image docker action
+# dockerfiles
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+Base OS: Alpine 10
+CI: Gitlab Action
+Package Registry: Github Package Registry
 
-## Inputs
+- How to pull images?
 
-### `who-to-greet`
+docker pull docker.pkg.github.com/gccpacman/dockerfiles/<image_name>:latest
 
-**Required** The name of the person to greet. Default `"World"`.
+- How to build based on this image?
 
-## Outputs
-
-### `time`
-
-The time we greeted you.
-
-## Example usage
-
-uses: actions/hello-world-docker-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
-
+FROM docker.pkg.github.com/gccpacman/dockerfiles/<image_name>:latest
 
 Github Publish Docker:
-
 https://github.com/marketplace/actions/publish-docker
