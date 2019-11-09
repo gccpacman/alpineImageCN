@@ -3,7 +3,6 @@ MAINTAINER gccpacman <gccpacman@gmail.com>
 
 # Set Env
 ENV HOME=/root \
-    PATH=${PATH}:/opt/jdk/bin \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.29-r0 \
     LANG=zh_CN.UTF-8 \
@@ -16,7 +15,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 # Install Tools and Dependencies
 RUN set -ex && apk -U upgrade
-RUN apk --no-cache add tar curl wget git jq tzdata ca-certificates bash
+RUN apk --no-cache add tar curl wget git jq tzdata ca-certificates
 RUN apk --no-cache add libstdc++ java-cacerts
 
 # Set TimeZone And CharMap
@@ -46,10 +45,11 @@ ENV INSTALL_DIR /usr
 RUN curl -L -b "oraclelicense=a" \
   "http://download.oracle.com/otn-pub/java/jdk/${UPDATE_VERSION}-${BUILD_VERSION}/${JAVA_DOWNLOAD_TOKEN}/jdk-${UPDATE_VERSION}-linux-x64.tar.gz" -O \
   && tar zxf jdk-${UPDATE_VERSION}-linux-x64.tar.gz -C $INSTALL_DIR/ \
-  && ln -s $JAVA_HOME $INSTALL_DIR/java \
-  && rm -rf $JAVA_HOME/man
+  && rm jdk-${UPDATE_VERSION}-linux-x64.tar.gz \
+  && ln -s $JAVA_HOME $INSTALL_DIR/java
 
-RUN rm -rf $JAVA_HOME/jre/plugin \
+RUN rm -rf $JAVA_HOME/man \
+           $JAVA_HOME/jre/plugin \
            $JAVA_HOME/jre/bin/javaws \
            $JAVA_HOME/jre/bin/orbd \
            $JAVA_HOME/jre/bin/pack200 \
@@ -81,4 +81,4 @@ RUN mkdir -p /data
 
 WORKDIR /data
 
-CMD ["/bin/bash"]
+CMD ["/bin/sh"]
