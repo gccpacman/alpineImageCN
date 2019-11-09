@@ -9,11 +9,11 @@ This dockerfiles is autobuild by Github Actions and pushed to Github Package reg
 
 - How to pull images?
 
-docker pull docker.pkg.github.com/gccpacman/dockerfiles/<image_name>:latest
+    docker pull docker.pkg.github.com/gccpacman/dockerfiles/<image_name>:latest
 
 - How to build based on this image?
 
-FROM docker.pkg.github.com/gccpacman/dockerfiles/<image_name>:latest
+    FROM docker.pkg.github.com/gccpacman/dockerfiles/<image_name>:latest
 
 Github Publish Docker:
 https://github.com/marketplace/actions/publish-docker
