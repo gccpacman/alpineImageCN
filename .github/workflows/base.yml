@@ -15,7 +15,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: gccpacman/dockerfiles/base
+        name: gccpacman/dockerfiles/base:3.8
         username: ${{ secrets.GPR_USERNAME }}
         password: ${{ secrets.GPR_TOKEN }}
         registry: docker.pkg.github.com

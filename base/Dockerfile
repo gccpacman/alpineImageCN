@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.8
 MAINTAINER gccpacman <gccpacman@gmail.com>
 
 # Set Env
