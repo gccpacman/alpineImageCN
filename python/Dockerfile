@@ -38,7 +38,7 @@ RUN apk add --no-cache python3 && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     mkdir /root/.pip/ && \
-    echo "[global]\nindex-url = http://pypi.douban.com/simple\ntrusted-host = pypi.douban.com" > /root/.pip/pip.conf && \
+    printf "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple\ntrusted-host = pypi.tuna.tsinghua.edu.cn" > /root/.pip/pip.conf && \
     pip3 install --no-cache --upgrade pip setuptools wheel && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
 
