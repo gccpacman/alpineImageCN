@@ -9,7 +9,7 @@ build_image:
   stage: build
   script:
     - cd helloworld
-    - docker build -t $IMAGE_URI:$IMAGE_TAG .
+    - docker build -t $IMAGE_URI/helloworld:$IMAGE_TAG .
     - docker push $IMAGE_URI/helloworld:$IMAGE_TAG
   variables:
     IMAGE_URI: $CI_REGISTRY_IMAGE
