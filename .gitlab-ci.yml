@@ -10,7 +10,7 @@ build_image:
   script:
     - cd helloworld
     - docker build -t $IMAGE_URI:$IMAGE_TAG .
-    - docker push $IMAGE_URI:$IMAGE_TAG
+    - docker push $IMAGE_URI/helloworld:$IMAGE_TAG
   variables:
     IMAGE_URI: $CI_REGISTRY_IMAGE
     IMAGE_TAG: latest
