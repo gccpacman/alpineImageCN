@@ -14,3 +14,5 @@ build_image:
   variables:
     IMAGE_URI: registry.gitlab.com/pacmac/dockerfiles/helloworld
     IMAGE_TAG: latest
+  tags:
+    - aws11
