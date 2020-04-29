@@ -7,9 +7,6 @@ before_script:
 build_image:
   stage: build
   script:
-    - sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories 
-    - apk update
-    - apk add curl tar docker
     - cd helloworld
     - docker build -t $IMAGE_URI:$IMAGE_TAG .
     - docker login registry.gitlab.com
