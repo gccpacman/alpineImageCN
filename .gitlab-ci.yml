@@ -1,18 +1,20 @@
 stages:
   - build
 
+variables:
+  IMAGE_BASE_URI: myk3s.tencentcloudcr.com/ddxyz/
+
 before_script:
   - docker info
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker login -u ${DOCKER_REGISTRY_USERNAME} -p ${DOCKER_REGISTRY_PASSWORD} ${DOCKER_REGISTRY_URL}
 
-build_image:
+build_helloworld:
   stage: build
+
   script:
     - cd helloworld
-    - docker build -t $IMAGE_URI/helloworld:$IMAGE_TAG .
-    - docker push $IMAGE_URI/helloworld:$IMAGE_TAG
-  variables:
-    IMAGE_URI: $CI_REGISTRY_IMAGE
-    IMAGE_TAG: latest
+    - docker build -t $IMAGE_BASE_URI/helloworld:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME} .
+    - docker push $IMAGE_BASE_URI/helloworld:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME}
   tags:
-    - aws11
+    - shell
+
