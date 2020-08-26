@@ -10,7 +10,6 @@ before_script:
 
 build_helloworld:
   stage: build
-
   script:
     - cd helloworld
     - docker build -t $IMAGE_BASE_URI/helloworld:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME} .
@@ -18,3 +17,20 @@ build_helloworld:
   tags:
     - shell
 
+build_python:
+  stage: build
+  script:
+    - cd python
+    - docker build -t $IMAGE_BASE_URI/python:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME} .
+    - docker push $IMAGE_BASE_URI/python:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME}
+  tags:
+    - shell
+
+build_java:
+  stage: build
+  script:
+    - cd java
+    - docker build -t $IMAGE_BASE_URI/java:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME} .
+    - docker push $IMAGE_BASE_URI/java:${CI_COMMIT_SHA:0:8}-${CI_PIPELINE_ID}-${CI_COMMIT_REF_NAME}
+  tags:
+    - shell
