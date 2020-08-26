@@ -2,7 +2,7 @@ stages:
   - build
 
 variables:
-  IMAGE_BASE_URI: myk3s.tencentcloudcr.com/ddxyz/
+  IMAGE_BASE_URI: myk3s.tencentcloudcr.com/ddxyz
 
 before_script:
   - docker info
